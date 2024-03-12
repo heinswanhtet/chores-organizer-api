@@ -1,8 +1,8 @@
-const express = require('express')
-const app = express()
 require('dotenv').config()
-const chores = require('./routes/chores')
+const express = require('express')
 const connectDB = require('./db/connection')
+const chores = require('./routes/chores')
+const app = express()
 
 // middleware
 app.use(express.json())
