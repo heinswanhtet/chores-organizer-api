@@ -1,9 +1,16 @@
+const Chore = require('../models/Chore')
+
 const getAllChores = (req, res) => {
     res.send('get all chores')
 }
 
-const createChore = (req, res) => {
-    res.send(`create chores: ${req.body.name}`)
+const createChore = async (req, res) => {
+    try {
+        const chore = await Chore.create(req.body)
+        res.status(201).json({ chore })
+    } catch (error) {
+        res.status(500).json(error)
+    }
 }
 
 const getSingleChore = (req, res) => {
