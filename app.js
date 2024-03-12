@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const connectDB = require('./db/connection')
 const errorHandlerMiddleware = require('./middleware/error-handler')
+const notFound = require('./middleware/404')
 const chores = require('./routes/chores')
 const app = express()
 
@@ -11,6 +12,7 @@ app.use(express.json())
 
 // routes
 app.use('/api/v1/chores', chores)
+app.use(notFound)
 
 app.use(errorHandlerMiddleware)
 
